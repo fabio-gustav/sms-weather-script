@@ -30,8 +30,8 @@ class Weather:
         
 
 
-key = "f2d119dcb84fc5b14008222e22c425b3"
-location = 'Normal'
+key = "API_Key"
+location = 'CURRENT TOWN'
 response = requests.get("https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid="+key+"&units=imperial")
 weather = json.loads(response.text)
 while weather.get("cod") == '404':
@@ -49,15 +49,15 @@ else:
 
 
 
-account_sid = "AC589765d5bdd03122235bb650f3363311"
-auth_token ="5a6d2dc242fc8517e91255b8dd18556f"
+account_sid = "TWILLIO_SID"
+auth_token ="TWILLIO_AUTH_TOKEN"
 
 client = Client(account_sid,auth_token)
 
 message = client.messages.create(
     body=str(weather1),
     from_="+17816505199",
-    to="+18152803280"
+    to="+RECIPIENT PHONE NUMBER"
 )
 
 print(message.sid)
